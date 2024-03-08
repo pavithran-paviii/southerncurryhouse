@@ -1,0 +1,55 @@
+@import "../../../assets/scss/variables.scss";
+
+.landing {
+  display: flex;
+  height: 100vh;
+  background-image: url("../../../assets/images/backgrounds/footer-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: $font-color-dark;
+
+  & > .wrapper {
+    margin: auto;
+    max-width: 1600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+    padding-top: 80px;
+
+    & > .welcomeText {
+      font-family: "Playfair Display", serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+      position: relative;
+      margin-bottom: 3rem;
+
+      & > svg {
+        width: 500px;
+        max-height: 100px;
+        fill: white;
+        position: absolute;
+        top: calc(100% + 15px);
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    & > .bigText {
+      font-family: "Sorts Mill Goudy", serif;
+      font-size: 3rem;
+      text-align: center;
+      color: $white-text;
+      opacity: 0.95;
+    }
+
+    & > .smallTag {
+      font-size: 1.2rem;
+      color: $white-text;
+      opacity: 0.8;
+      font-family: "Sorts Mill Goudy", serif;
+    }
+  }
+}

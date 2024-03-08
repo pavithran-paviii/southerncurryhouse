@@ -1,0 +1,112 @@
+@import "../../assets/scss/variables.scss";
+
+.navbar {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  width: 100%;
+  color: white;
+
+  &::before {
+    content: "";
+    position: absolute;
+    height: 0.5px;
+    //   width: 100%;
+    top: 52px;
+    background: $border-color-dark;
+    left: 0;
+    right: 0;
+    opacity: 0.5;
+  }
+
+  & > .wrapper {
+    margin: auto;
+    max-width: 1600px;
+    position: relative;
+    padding: 0 1rem;
+
+    & > .contactNav {
+      height: 52px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.9rem;
+
+      & > .info,
+      .contact {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+
+        & > div {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+        }
+
+        & > svg {
+          //   color: $font-color-dark;
+          opacity: 0.6;
+        }
+      }
+    }
+
+    & > .navigationNav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100px;
+
+      & > .logo {
+        display: flex;
+        width: 250px;
+
+        & > img {
+          height: 60px;
+        }
+
+        & > .singleLetter {
+          font-size: 3.5rem;
+          line-height: 100%;
+          margin-left: 5px;
+        }
+
+        & > div {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          text-align: left;
+          line-height: 130%;
+          letter-spacing: 1px;
+          font-family: "Archivo", sans-serif;
+          font-variation-settings: "wdth" 100;
+          color: #9f4a03;
+
+          & > :nth-child(1) {
+            font-size: 1.4rem;
+          }
+
+          & > :nth-child(2) {
+            font-size: 1rem;
+            letter-spacing: 2px;
+          }
+        }
+      }
+
+      & > .navItems {
+        display: flex;
+        gap: 2rem;
+        align-items: center;
+        text-transform: uppercase;
+
+        & > div {
+          cursor: pointer;
+        }
+      }
+
+      & > .button {
+        width: 250px;
+      }
+    }
+  }
+}

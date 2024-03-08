@@ -1,3 +1,5 @@
+@import "./assets/scss/variables.scss";
+
 .App {
   text-align: center;
 }
@@ -7,7 +9,7 @@
   background: radial-gradient(
     circle,
     rgba(114, 56, 3, 1) 0%,
-    rgba(213, 145, 83, 1) 86%,
+    rgb(225, 141, 63) 86%,
     rgba(166, 143, 124, 1) 100%
   );
   color: white;
