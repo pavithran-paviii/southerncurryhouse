@@ -59,3 +59,15 @@
     }
   }
 }
+
+@media only screen and (max-width: 860px) {
+  /* CSS rules for extra small devices */
+
+  .menuCarousal {
+    padding: 0 10px;
+
+    & > .wrapper {
+      padding: 20px 0;
+    }
+  }
+}

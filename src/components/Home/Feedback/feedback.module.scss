@@ -240,6 +240,30 @@
   }
 }
 
+@media only screen and (max-width: 860px) {
+  /* CSS rules for extra small devices */
+
+  .feedback {
+    // padding: 0 10px;
+
+    & > .wrapper {
+      padding-bottom: 0;
+      
+      & > .allReviews {
+        padding: 20px 0;
+      }
+
+      & > .newReview {
+        flex-direction: column;
+
+        & > div {
+          width: 100% !important;
+        }
+      }
+    }
+  }
+}
+
 // animation: rotate 2s linear infinite;
 // @keyframes rotate {
 //             from {
