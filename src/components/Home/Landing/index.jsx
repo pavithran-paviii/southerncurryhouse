@@ -3,6 +3,7 @@ import classNames from "./landing.module.scss";
 
 //assets
 import { ReactComponent as Divider } from "../../../assets/images/elements/divider.svg";
+import { GeneralButton } from "../../General/Button";
 
 const Landing = () => {
   return (
@@ -19,6 +20,7 @@ const Landing = () => {
         <div className={classNames.smallTag}>
           Try out the finest south indian dishes
         </div>
+        <GeneralButton text="View our menu" />
       </div>
     </div>
   );

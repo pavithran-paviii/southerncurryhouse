@@ -1,11 +1,12 @@
 @import "../../assets/scss/variables.scss";
 
 .navbar {
-  position: fixed;
+  position: absolute;
   z-index: 2;
   top: 0;
   width: 100%;
   color: white;
+  background: transparent;
 
   &::before {
     content: "";
@@ -101,11 +102,67 @@
 
         & > div {
           cursor: pointer;
+          position: relative;
+          transition: all linear 0.3s;
+
+          &::before {
+            content: "";
+            position: absolute;
+            width: 0%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            bottom: -50%;
+            height: 0.5px;
+            background: $font-color-dark;
+            opacity: 0;
+            transition: all linear 0.3s;
+          }
+
+          &::after {
+            content: "";
+            position: absolute;
+            width: 0%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            bottom: -35%;
+            height: 0.5px;
+            background: $font-color-dark;
+            opacity: 0;
+            transition: all linear 0.3s;
+          }
+
+          &:hover {
+            color: $font-color-dark;
+          }
+        }
+
+        & > .selectedNav {
+          color: $font-color-dark;
+
+          &::before {
+            opacity: 1;
+            width: 100%;
+          }
+
+          &::after {
+            opacity: 1;
+            width: 100%;
+          }
         }
       }
 
-      & > .button {
-        width: 250px;
+      & > .generalBtn {
+        width: 200px;
+        background: $font-color-dark;
+        height: 55%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 1rem;
+        text-transform: uppercase;
+        color: black;
+        font-weight: 550;
+        cursor: pointer;
       }
     }
   }

@@ -1,13 +1,10 @@
 @import "../../../assets/scss/variables.scss";
 
-.landing {
-  display: flex;
+.menuCarousal {
+  background: $primary-color-dark;
+  overflow: hidden;
+  position: relative;
   height: 100vh;
-  background-image: url("../../../assets/images/backgrounds/footer-bg.jpg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  color: $font-color-dark;
 
   & > .wrapper {
     margin: auto;
@@ -18,6 +15,8 @@
     align-items: center;
     gap: 2.5rem;
     padding-top: 100px;
+    max-height: 1500px;
+    height: 100%;
 
     & > .welcomeText {
       font-family: "Playfair Display", serif;
@@ -25,6 +24,7 @@
       font-weight: 500;
       position: relative;
       margin-bottom: 3rem;
+      color: $font-color-dark;
 
       & > svg {
         width: 500px;
@@ -37,19 +37,25 @@
       }
     }
 
-    & > .bigText {
-      font-family: "Sorts Mill Goudy", serif;
-      font-size: 3rem;
-      text-align: center;
-      color: $white-text;
-      opacity: 0.95;
-    }
+    & > .carousalContainer {
+      width: 100%;
+      height: 80%;
+      padding-bottom: 1rem;
 
-    & > .smallTag {
-      font-size: 1.2rem;
-      color: $white-text;
-      opacity: 0.8;
-      font-family: "Sorts Mill Goudy", serif;
+      button {
+        display: none;
+      }
+
+      & > div {
+        & > div {
+          max-width: unset !important;
+          margin: auto;
+
+          & > div {
+            gap: 1rem;
+          }
+        }
+      }
     }
   }
 }

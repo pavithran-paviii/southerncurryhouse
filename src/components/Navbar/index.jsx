@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import classNames from "./navbar.module.scss";
 
 //assets
@@ -10,8 +10,14 @@ import { FaBowlFood } from "react-icons/fa6";
 import { LuClock5 } from "react-icons/lu";
 import { FiPhone } from "react-icons/fi";
 import { IoMailOpenOutline } from "react-icons/io5";
+import { GeneralButton } from "../General/Button";
 
 const Navbar = () => {
+  const [selectedNavItem, setSelectedNavItem] = useState("Home");
+
+  //constant
+  const allNavItems = ["Home", "Menus", "About us", "Contact"];
+
   return (
     <div className={classNames.navbar}>
       <div className={classNames.wrapper}>
@@ -49,12 +55,22 @@ const Navbar = () => {
             </div>
           </div>
           <div className={classNames.navItems}>
-            <div>Home</div>
-            <div>Menus</div>
-            <div>About Us</div>
-            <div>Contact</div>
+            {allNavItems?.map((eachItem, index) => {
+              return (
+                <div
+                  className={
+                    selectedNavItem === eachItem && classNames.selectedNav
+                  }
+                  onClick={(event) => {
+                    setSelectedNavItem(eachItem);
+                  }}
+                >
+                  {eachItem}
+                </div>
+              );
+            })}
           </div>
-          <div className={classNames.button}></div>
+          <GeneralButton text="Locate" />
         </div>
       </div>
     </div>

@@ -1,0 +1,166 @@
+@import "../../../assets/scss/variables.scss";
+
+.about {
+  // height: 100vh;
+  background: $primary-color-dark;
+  overflow: hidden;
+  position: relative;
+
+  & > .wrapper {
+    margin: auto;
+    max-width: 1600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    padding-top: 100px;
+
+    & > .welcomeText {
+      font-family: "Playfair Display", serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+      position: relative;
+      margin-bottom: 3rem;
+      color: $font-color-dark;
+
+      & > svg {
+        width: 500px;
+        max-height: 100px;
+        fill: white;
+        position: absolute;
+        top: calc(100% + 15px);
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    & > .bigText {
+      font-family: "Sorts Mill Goudy", serif;
+      font-size: 3rem;
+      text-align: center;
+      color: $white-text;
+      opacity: 0.95;
+    }
+
+    & > .smallTag {
+      font-size: 1.2rem;
+      color: $white-text;
+      opacity: 0.8;
+      font-family: "Sorts Mill Goudy", serif;
+    }
+
+    & > .availableCategories {
+      color: white;
+      position: relative;
+      width: 80%;
+      height: 80vh;
+
+      & > div {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+
+        & > img {
+          // height: 10rem;
+          width: 280px;
+          height: 330px;
+          border-radius: 5px;
+        }
+
+        & > .title {
+          font-size: 1.75rem;
+        }
+
+        & > .viewBtn {
+          font-size: 0.8rem;
+          color: $font-color-dark;
+          opacity: 0.5;
+          text-transform: uppercase;
+          letter-spacing: 2px;
+          cursor: pointer;
+          position: relative;
+          width: max-content;
+          margin: auto;
+          transition: all linear 0.3s;
+
+          &::before {
+            content: "";
+            position: absolute;
+            width: 0%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            bottom: -50%;
+            height: 0.5px;
+            background: $font-color-dark;
+            opacity: 0;
+            transition: all linear 0.3s;
+          }
+
+          &::after {
+            content: "";
+            position: absolute;
+            width: 0%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            bottom: -35%;
+            height: 0.5px;
+            background: $font-color-dark;
+            opacity: 0;
+            transition: all linear 0.3s;
+          }
+
+          &:hover {
+            &::before {
+              opacity: 1;
+              width: 100%;
+            }
+
+            &::after {
+              opacity: 1;
+              width: 100%;
+            }
+          }
+        }
+      }
+
+      & > :nth-child(1) {
+        left: 10%;
+        top: 25%;
+      }
+      & > :nth-child(2) {
+        top: 45%;
+      }
+      & > :nth-child(3) {
+        left: 90%;
+        top: 25%;
+      }
+    }
+  }
+
+  & > svg {
+    position: absolute;
+    width: 300px; /* Adjust the size as needed */
+    height: 200px;
+    color: white;
+    fill: white;
+    animation: upDown 2s infinite;
+    opacity: 0.15;
+  }
+
+  @keyframes upDown {
+    0% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(-10px);
+    }
+    100% {
+      transform: translateY(0);
+    }
+  }
+}
