@@ -1,0 +1,207 @@
+@import "../../assets/scss/variables.scss";
+
+.menu {
+  display: flex;
+  //   height: 100vh;
+  background-image: url("../../assets/images/backgrounds/footer-bg.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  color: $font-color-dark;
+
+  & > .wrapper {
+    margin: auto;
+    max-width: 1600px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2.5rem;
+    padding-top: 200px;
+
+    & > .welcomeText {
+      font-family: "Playfair Display", serif;
+      font-size: 1.2rem;
+      font-weight: 500;
+      position: relative;
+      margin-bottom: 3rem;
+
+      & > svg {
+        width: 500px;
+        max-height: 100px;
+        fill: white;
+        position: absolute;
+        top: calc(100% + 15px);
+        left: 50%;
+        transform: translate(-50%, -50%);
+      }
+    }
+
+    & > .bigText {
+      font-family: "Sorts Mill Goudy", serif;
+      font-size: 3rem;
+      text-align: center;
+      color: $white-text;
+      opacity: 0.95;
+    }
+
+    & > .eachSection {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 2rem;
+
+      & > .title {
+        font-size: 1.2rem;
+        font-weight: 500;
+        color: $font-color-dark;
+        text-transform: uppercase;
+        letter-spacing: 3px;
+        position: relative;
+        width: max-content;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 115%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          height: 1px;
+          background: $font-color-dark;
+          opacity: 0.5;
+          width: 100%;
+          animation: reduceIncrease 5s infinite;
+        }
+        &::after {
+          content: "";
+          position: absolute;
+          top: 130%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          height: 1px;
+          background: $font-color-dark;
+          opacity: 0.5;
+          width: 100%;
+          animation: reduceIncrease 5s infinite;
+        }
+
+        @keyframes reduceIncrease {
+          0% {
+            width: 100%;
+          }
+          50% {
+            width: 0%;
+          }
+          100% {
+            width: 100%;
+          }
+        }
+      }
+
+      & > .allItems {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        position: relative;
+        margin-top: 5rem;
+        gap: 6rem;
+        color: white;
+        padding: 1.5rem 1rem;
+        max-width: 1250px;
+
+        &::before {
+          content: "";
+          position: absolute;
+          width: 1px;
+          top: 0%;
+          left: 50%;
+          transform: translate(-50%, 0%);
+          height: 100%;
+          background: $font-color-dark;
+          opacity: 0.5;
+        }
+
+        & > .eachItem {
+          display: flex;
+          //   align-items: center;
+          gap: 1rem;
+
+          & > .itemImage {
+            width: 6rem;
+            height: 6rem;
+            min-width: 6rem;
+            min-height: 6rem;
+            border-radius: 12px;
+          }
+
+          & > .itemDetails {
+            padding: 0.25rem 0;
+
+            & > .titlePrice {
+              display: flex;
+              font-size: 1.5rem;
+              font-weight: 500;
+              white-space: nowrap;
+              margin-bottom: 1rem;
+
+              & > :nth-child(2) {
+                width: -webkit-fill-available;
+                position: relative;
+
+                &::before {
+                  content: "";
+                  position: absolute;
+                  height: 1px;
+                  top: 40%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  width: calc(100% - 3rem);
+                  background: $font-color-dark;
+                  opacity: 0.5;
+                }
+                &::after {
+                  content: "";
+                  position: absolute;
+                  height: 1px;
+                  top: 60%;
+                  left: 50%;
+                  transform: translate(-50%, -50%);
+                  width: calc(100% - 3rem);
+                  background: $font-color-dark;
+                  opacity: 0.5;
+                }
+              }
+
+              & > :last-child {
+                color: $font-color-dark;
+              }
+            }
+
+            & > .desc {
+              font-size: 0.9rem;
+              opacity: 0.7;
+              text-align: left;
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 860px) {
+  /* CSS rules for extra small devices */
+
+  .menu {
+    padding: 0 10px;
+
+    & > .wrapper {
+      padding: 20px 0;
+
+      & > .welcomeText {
+        & > svg {
+          width: 100%;
+        }
+      }
+    }
+  }
+}

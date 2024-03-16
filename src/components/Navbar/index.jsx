@@ -11,12 +11,19 @@ import { LuClock5 } from "react-icons/lu";
 import { FiPhone } from "react-icons/fi";
 import { IoMailOpenOutline } from "react-icons/io5";
 import { GeneralButton } from "../General/Button";
+import { useNavigate } from "react-router-dom";
 
 const Navbar = () => {
+  const navigate = useNavigate();
   const [selectedNavItem, setSelectedNavItem] = useState("Home");
 
   //constant
-  const allNavItems = ["Home", "Menus", "About us", "Contact"];
+  const allNavItems = [
+    { title: "Home", nav: "/" },
+    { title: "Menu", nav: "/menu" },
+    { title: "About us" },
+    { title: "Contact" },
+  ];
 
   return (
     <div className={classNames.navbar}>
@@ -46,7 +53,7 @@ const Navbar = () => {
           </div>
         </div>
         <div className={classNames.navigationNav}>
-          <div className={classNames.logo}>
+          <div className={classNames.logo} onClick={() => navigate("/")}>
             <img src={mainLogo} alt="mainLogo" />
             <div className={classNames.singleLetter}>S</div>
             <div>
@@ -59,13 +66,20 @@ const Navbar = () => {
               return (
                 <div
                   className={
-                    selectedNavItem === eachItem && classNames.selectedNav
+                    (selectedNavItem === eachItem ||
+                      window?.location?.pathname?.includes(
+                        eachItem?.title?.toLowerCase()
+                      )) &&
+                    classNames.selectedNav
                   }
                   onClick={(event) => {
                     setSelectedNavItem(eachItem);
+                    if (eachItem?.nav) {
+                      navigate(eachItem?.nav);
+                    }
                   }}
                 >
-                  {eachItem}
+                  {eachItem?.title}
                 </div>
               );
             })}

@@ -7,8 +7,10 @@ import { ReactComponent as VanillaFlowerIcon } from "../../../assets/images/spic
 import { ReactComponent as Divider } from "../../../assets/images/elements/divider.svg";
 import about1 from "../../../assets/images/dishes/about1.jpg";
 import about2 from "../../../assets/images/dishes/about2.jpg";
+import { useNavigate } from "react-router-dom";
 
 const About = () => {
+  const navigate = useNavigate();
   return (
     <div className={classNames.about}>
       <AyurvedaBowlIcon
@@ -32,17 +34,38 @@ const About = () => {
           <div>
             <img src={about1} alt="about1" />
             <div className={classNames.title}>Curry</div>
-            <div className={classNames.viewBtn}>View Menu</div>
+            <div
+              className={classNames.viewBtn}
+              onClick={() => {
+                navigate("/menu");
+              }}
+            >
+              View Menu
+            </div>
           </div>
           <div>
             <img src={about2} alt="about2" />
             <div className={classNames.title}>Sides</div>
-            <div className={classNames.viewBtn}>View Menu</div>
+            <div
+              className={classNames.viewBtn}
+              onClick={() => {
+                navigate("/menu");
+              }}
+            >
+              View Menu
+            </div>
           </div>
           <div>
             <img src={about2} alt="about3" />
             <div className={classNames.title}>Deserts</div>
-            <div className={classNames.viewBtn}>View Menu</div>
+            <div
+              className={classNames.viewBtn}
+              onClick={() => {
+                navigate("/menu");
+              }}
+            >
+              View Menu
+            </div>
           </div>
         </div>
       </div>
