@@ -1,0 +1,235 @@
+@import "../../assets/scss/variables.scss";
+
+.customInput {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  & > .title {
+    font-size: 1rem;
+    font-weight: 420;
+  }
+
+  & > .inputContainer {
+    width: 100%;
+    position: relative;
+
+    & > input {
+      width: 100%;
+      border: 1px solid grey;
+      border-radius: 8px;
+      padding: 0.8rem;
+      outline: none;
+      transition: all linear 0.3s;
+
+      &:focus {
+        border: 1px solid black;
+      }
+    }
+
+    & > svg {
+      font-size: 1.5rem;
+      position: absolute;
+      top: 50%;
+      right: 0.5rem;
+      transform: translate(-50%, -50%);
+      cursor: pointer;
+      color: grey;
+      transition: all linear 0.3s;
+
+      &:hover {
+        color: $font-color-dark;
+      }
+    }
+  }
+}
+
+.customButton {
+  display: flex;
+  gap: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  // border: 0.2px solid grey;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.95rem;
+  font-weight: 520;
+  padding: 1rem 2rem;
+  border: none;
+  transition: all linear 0.3s;
+
+  & > img {
+    width: 1rem;
+    height: 1rem;
+  }
+
+  & > svg {
+    font-size: 1.2rem;
+    cursor: pointer;
+    color: grey;
+    transition: all linear 0.3s;
+  }
+
+  &:hover {
+    box-shadow: $font-color-light 0px 3px 8px;
+  }
+}
+
+.customCheckbox {
+  /* Add any common styling for your custom checkbox container */
+  display: flex;
+  align-items: center;
+
+  .checkboxContainer {
+    /* Styling for the checkbox container */
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .checkboxContainer input[type="checkbox"] {
+    /* Styling for the checkbox itself */
+    margin-right: 10px;
+    background-color: red; /* Red background color */
+  }
+
+  // .checkboxContainer label {
+  //   /* Styling for the label (tick) */
+  //   color: white; /* White color for the tick */
+  // }
+}
+
+//custom dropdown
+
+.eachCustomDropdown {
+  position: relative;
+  min-width: 220px;
+  height: 3rem;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all linear 0.3s;
+
+  & > .topTitle {
+    font-size: 1rem;
+    font-weight: 420;
+  }
+
+  & > .inputContainer {
+    padding: 1rem 1.5rem;
+    border-radius: 5px;
+    border: 1px solid grey;
+    font-size: 0.8rem;
+    background: white;
+    width: 100%;
+    max-width: 500px;
+    position: absolute;
+    top: 0rem;
+    z-index: 2;
+    max-height: 400px;
+    overflow-y: scroll;
+    transition: all ease-in 0.2s;
+
+    & > span {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    &:focus {
+      outline: var(--main-color);
+      border: 1.5px solid var(--main-color);
+      background: white;
+    }
+
+    & > ul {
+      list-style: none;
+      cursor: pointer;
+      margin: 0;
+      margin-top: 1rem;
+
+      & > li {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem 0rem;
+
+        & > img {
+          width: 20px;
+          height: 20px;
+          border-radius: 50%;
+        }
+      }
+
+      & > li:has(input) {
+        padding: 0;
+
+        & > input {
+          height: 100%;
+          width: 100%;
+          border: none;
+          outline: none;
+          padding: 0.75rem 0rem;
+          color: var(--font-color);
+          background: transparent;
+          transition: all ease-in 0.2s;
+
+          :focus {
+            border: 2px solid var(--main-color);
+          }
+        }
+      }
+    }
+
+    ::-webkit-scrollbar {
+      width: 0.5em; /* Adjust the width as needed */
+      background-color: transparent; /* Adjust the background color as needed */
+      display: none;
+    }
+
+    ::-webkit-scrollbar-thumb {
+      background-color: transparent; /* Adjust the thumb color as needed */
+      display: none;
+    }
+  }
+}
+
+.eachInputDatePicker {
+  & > .title {
+    font-size: 0.9rem;
+    position: relative;
+    width: max-content;
+
+    & > img {
+      position: absolute;
+      top: 1px;
+      right: -0.95rem;
+      width: 0.5rem;
+      height: 0.5rem;
+    }
+  }
+
+  & > .inputContainer {
+    color: var(--font-color);
+    padding: 1rem 1.5rem;
+    border-radius: 10px;
+    border: 1px solid rgba(229, 229, 229, 0.4);
+    font-size: 0.8rem;
+    background: white;
+    margin-top: 1rem;
+    width: 100%;
+    max-width: 500px;
+    transition: all linear 0.3s;
+
+    // &:focus {
+    //   background: white;
+    //   border: 1.5px solid var(--main-color);
+    // }
+    // &:hover {
+    //   background: white;
+    //   border: 1.5px solid var(--main-color);
+    // }
+  }
+}
