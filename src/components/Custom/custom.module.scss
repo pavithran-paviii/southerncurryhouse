@@ -17,7 +17,7 @@
     & > input {
       width: 100%;
       border: 1px solid grey;
-      border-radius: 8px;
+      border-radius: 6px;
       padding: 0.8rem;
       outline: none;
       transition: all linear 0.3s;
@@ -86,7 +86,7 @@
     display: flex;
     align-items: center;
     padding: 10px;
-    border-radius: 8px;
+    border-radius: 6px;
   }
 
   .checkboxContainer input[type="checkbox"] {

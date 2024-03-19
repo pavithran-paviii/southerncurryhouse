@@ -237,15 +237,15 @@ export const CustomDropdown = ({
                     <li
                       onClick={(event) => {
                         event.stopPropagation();
-                        selectOption(eachitem[mapVal?.name]);
+                        selectOption(eachitem[mapVal]);
                         setState({
                           ...stateValue,
                           [name]: eachitem[stateVal],
                         });
                       }}
-                      key={eachitem[mapVal?.name] + index}
+                      key={eachitem[mapVal] + index}
                     >
-                      {eachitem[mapVal?.name]}
+                      {eachitem[mapVal]}
                     </li>
                   );
                 })

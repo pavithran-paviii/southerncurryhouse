@@ -1,6 +1,6 @@
 @import "../../assets/scss/variables.scss";
 
-.client {
+.menuu {
   position: relative;
   padding: 2rem;
   height: 100%;
@@ -16,7 +16,7 @@
       padding: 1rem 1.5rem;
       border: 1px solid grey;
       min-width: 450px;
-      border-radius: 15px;
+      border-radius: 8px;
       outline: none;
 
       &:focus {
@@ -65,8 +65,7 @@
         & > tr {
           border-bottom: 1px solid #e5e5e5;
 
-          & > :nth-child(5),
-          :nth-child(6) {
+          & :nth-child(6) {
             display: flex;
             justify-content: center;
             align-items: center;
@@ -89,7 +88,7 @@
 
       tr {
         display: grid;
-        grid-template-columns: repeat(4, 1fr) 100px 100px;
+        grid-template-columns: 1fr 1fr 100px 1.3fr 0.7fr 100px;
       }
     }
   }
@@ -154,6 +153,60 @@
           margin-top: 2rem;
         }
       }
+    }
+  }
+
+  & > .addItem {
+    position: absolute;
+    padding: 2rem;
+    border: 1px solid #e1e1e1;
+    border-radius: 7px;
+    background: white;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-height: 80vh;
+    overflow-y: scroll;
+    min-width: 500px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    // aspect-ratio: 2/1;
+
+    & > .title {
+      font-size: 2rem;
+      color: $font-color-dark;
+    }
+
+    & > .inputContainer {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+
+      & > :last-child {
+        ::-webkit-scrollbar {
+          width: 0.5em; /* Adjust the width as needed */
+          background-color: transparent; /* Adjust the background color as needed */
+          display: none;
+        }
+
+        ::-webkit-scrollbar-thumb {
+          background-color: transparent; /* Adjust the thumb color as needed */
+          display: none;
+        }
+      }
+    }
+
+    & > .submitBtn {
+      padding: 0.6rem 1.5rem;
+      background: $font-color-dark;
+      color: white;
+      font-size: 1rem;
+      font-weight: 500;
+      cursor: pointer;
+      border-radius: 7px;
+      margin-top: 1.5rem;
+      width: max-content;
     }
   }
 }

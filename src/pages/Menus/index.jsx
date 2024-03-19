@@ -1,8 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import classNames from "./menus.module.scss";
 import { useNavigate } from "react-router-dom";
-import {
+import CustomInput, {
   CustomButton,
+  CustomDropdown,
   EachCustomDatePicker,
   Toastify,
 } from "../../components/Custom";
@@ -18,6 +19,8 @@ const Menus = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [allMenuItems, setAllMenuItems] = useState([]);
   const [localRefresh, setLocalRefresh] = useState(false);
+  const [newItem, setNewItem] = useState({});
+  const [createNewItem, setCreateNewItem] = useState(false);
 
   //functions
 
@@ -64,12 +67,38 @@ const Menus = () => {
       });
   }
 
+  function addMenuItem() {
+    newItem.email = email;
+    axios
+      .post(`${BACKENDURL}/menu`, newItem)
+      .then((response) => {
+        if (response?.data?.status) {
+          setCreateNewItem(false);
+          setLocalRefresh((prev) => !prev);
+          Toastify(response?.data?.message, "success");
+        } else {
+          Toastify(response?.data?.message, "error");
+        }
+        console.log(response, "Added menu item response");
+      })
+      .catch((error) => {
+        console.log(error, "Added menu item error");
+        Toastify(
+          error?.response?.data?.message
+            ? error?.response?.data?.message
+            : error?.message,
+          "error",
+          "error"
+        );
+      });
+  }
+
   useEffect(() => {
     getAllMenu();
   }, [localRefresh]);
 
   return (
-    <div className={classNames.client}>
+    <div className={classNames.menuu}>
       <div className={classNames.topBar}>
         <input
           type="text"
@@ -77,8 +106,13 @@ const Menus = () => {
           placeholder="Search Item..."
           onChange={(event) => setSearchQuery(event?.target?.value)}
         />
-        <button className={classNames.addClient} onClick={() => {}}>
-          Add Item To Menu
+        <button
+          className={classNames.addClient}
+          onClick={() => {
+            setCreateNewItem((prev) => !prev);
+          }}
+        >
+          {createNewItem ? "Close" : "Add Item To Menu"}
         </button>
       </div>
       <div
@@ -122,6 +156,67 @@ const Menus = () => {
           </tbody>
         </table>
       </div>
+      {createNewItem && (
+        <div className={classNames.addItem}>
+          <div className={classNames.title}>Add item to menu</div>
+          <div className={classNames.inputContainer}>
+            <CustomInput
+              title="Name"
+              placeHolder="Enter dish name..."
+              name="name"
+              stateValue={newItem}
+              setState={setNewItem}
+            />
+            <CustomInput
+              title="Description"
+              placeHolder="Enter description..."
+              name="desc"
+              stateValue={newItem}
+              setState={setNewItem}
+            />
+            <CustomInput
+              title="Price"
+              placeHolder="Enter price..."
+              name="price"
+              stateValue={newItem}
+              setState={setNewItem}
+            />
+            <CustomInput
+              title="Dish Image"
+              placeHolder="Enter image URL..."
+              name="image"
+              stateValue={newItem}
+              setState={setNewItem}
+            />
+            <div>
+              <CustomDropdown
+                dropdown={[
+                  { name: "VEG-APPETIZERS", value: "VEG-APPETIZERS" },
+                  { name: "NON-VEG-APPETIZERS", value: "NON-VEG-APPETIZERS" },
+                  { name: "VEGETARIAN-ENTRIESS", value: "VEGETARIAN-ENTRIESS" },
+                  {
+                    name: "NON-VEGETARIAN-ENTRIESS",
+                    value: "NON-VEGETARIAN-ENTRIESS",
+                  },
+                  { name: "DESSERTS", value: "DESSERTS" },
+                  { name: "SIDES", value: "SIDES" },
+                ]}
+                name="category"
+                title="Select Category"
+                stateValue={newItem}
+                setState={setNewItem}
+                topTitle="true"
+                type="obj"
+                mapVal={"name"}
+                stateVal={"value"}
+              />
+            </div>
+          </div>
+          <div className={classNames.submitBtn} onClick={addMenuItem}>
+            Submit
+          </div>
+        </div>
+      )}
     </div>
   );
 };
