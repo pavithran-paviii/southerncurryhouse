@@ -8,7 +8,7 @@ export const GeneralButton = ({ text }) => {
       class="button-52"
       role="button"
       onClick={() => {
-        if (text == "Locate") {
+        if (text === "Locate") {
         } else {
           navigate("/menu");
         }

@@ -101,7 +101,6 @@ export const CustomDropdown = ({
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const [selectedOption, setSelectedOption] = useState(null);
-  const [searchQuery, setSearchQuery] = useState("");
   const dropdownRef = useRef(null);
   const inputRef = useRef(null);
 
@@ -245,31 +244,6 @@ export const CustomDropdown = ({
                     </li>
                   );
                 })
-              : title === "All Countries"
-              ? dropdown?.length > 0 &&
-                dropdown
-                  ?.filter((row) => {
-                    // Convert the row object values to an array and check if any value matches the search query
-                    const searchQueryy = searchQuery?.toLowerCase(); // Convert the search query to lowercase for a case-insensitive search
-                    return row?.toLowerCase()?.includes(searchQueryy);
-                  })
-                  ?.map((eachitem, index) => {
-                    return (
-                      <li
-                        onClick={(event) => {
-                          event.stopPropagation();
-                          selectOption(eachitem);
-                          setState(eachitem);
-                        }}
-                        key={eachitem + index}
-                        style={{
-                          display: eachitem === stateValue ? "none" : "",
-                        }}
-                      >
-                        {eachitem}
-                      </li>
-                    );
-                  })
               : (name === "Gender" ||
                   name === "groupType" ||
                   type === "single") &&

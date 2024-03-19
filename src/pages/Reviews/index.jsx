@@ -159,20 +159,6 @@ const Reviews = () => {
                       <td>
                         <div
                           className={classNames.approveBtn}
-                          // style={{
-                          //   pointerEvents:
-                          //     eachItem?.approved == "true" ||
-                          //     eachItem?.approved == "True" ||
-                          //     eachItem?.approved
-                          //       ? "none"
-                          //       : "unset",
-                          //   opacity:
-                          //     eachItem?.approved == "true" ||
-                          //     eachItem?.approved == "True" ||
-                          //     eachItem?.approved
-                          //       ? "0.5"
-                          //       : "1",
-                          // }}
                           onClick={() => approveReviewById(eachItem?._id)}
                         >
                           Approve
