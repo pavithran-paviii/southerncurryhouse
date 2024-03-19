@@ -12,6 +12,7 @@ import Authentication, { Login, SignUp } from "./pages/Authentication";
 import DashboardLayout from "./layout/Dashboard";
 import Menus from "./pages/Menus";
 import Offers from "./pages/Offers";
+import Reviews from "./pages/Reviews";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,7 +24,7 @@ const router = createBrowserRouter(
       <Route path="dashboard" element={<DashboardLayout child="" />} />
       <Route path="menus" element={<DashboardLayout child={<Menus />} />} />
       <Route path="offers" element={<DashboardLayout child={<Offers />} />} />
-      <Route path="reviews" element={<DashboardLayout child="" />} />
+      <Route path="reviews" element={<DashboardLayout child={<Reviews />} />} />
       <Route path="*" element={<Error />} />
     </Route>
   )

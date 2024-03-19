@@ -1,7 +1,33 @@
-import React from "react";
+import React, { useState } from "react";
 import classNames from "./feedback.module.scss";
+import axios from "axios";
+import { Toastify } from "../../Custom";
 
 const Feedback = () => {
+  const [reviewData, setReviewData] = useState({});
+  async function submitReview() {
+    try {
+      let response = await axios.post(
+        `https://backend.zafapetcare.com/review`,
+        reviewData
+      );
+      console.log(response, "Create review response");
+      Toastify(response?.data?.message, "success");
+      setTimeout(() => {
+        window?.location?.reload();
+      }, 1500);
+    } catch (error) {
+      console.log(error?.message, "Submit review server error");
+      Toastify(
+        error?.response?.data?.message
+          ? error?.response?.data?.message
+          : error?.message,
+        "error",
+        "error"
+      );
+    }
+  }
+
   return (
     <div className={classNames.feedback}>
       <div className={classNames.wrapper}>
@@ -26,9 +52,27 @@ const Feedback = () => {
                 <span> better</span>
               </div>
             </div>
-            <input type="text" placeholder="Your Name" />
-            <textarea type="text" placeholder="Message" />
-            <div className={classNames.submitBtn}>Submit</div>
+            <input
+              type="text"
+              placeholder="Your Name"
+              onChange={(event) => {
+                setReviewData((prev) => {
+                  return { ...prev, name: event?.target?.value };
+                });
+              }}
+            />
+            <textarea
+              type="text"
+              placeholder="Message"
+              onChange={(event) => {
+                setReviewData((prev) => {
+                  return { ...prev, message: event?.target?.value };
+                });
+              }}
+            />
+            <div className={classNames.submitBtn} onClick={submitReview}>
+              Submit
+            </div>
           </div>
           <div className={classNames.contactBox}>
             <div className={classNames.title}>Contact Us</div>
