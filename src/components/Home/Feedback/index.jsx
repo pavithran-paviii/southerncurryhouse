@@ -11,7 +11,7 @@ const Feedback = () => {
         `https://backend.zafapetcare.com/review`,
         reviewData
       );
-      console.log(response, "Create review response");
+
       Toastify(response?.data?.message, "success");
       setTimeout(() => {
         window?.location?.reload();
