@@ -3,6 +3,7 @@
 .dashboardLayout {
   display: flex;
   background: $font-color-dark;
+  height: 100vh;
 
   & > .leftSidebar {
     min-width: 200px;
@@ -30,7 +31,7 @@
 
       & > .sidebarItem {
         cursor: pointer;
-        color: #949393;
+        color: #ffffff;
         display: flex;
         align-items: center;
         gap: 10px;
@@ -41,7 +42,7 @@
       }
 
       & > .selectedItem {
-        color: white;
+        text-decoration: underline;
       }
 
       & > .otherItems {
