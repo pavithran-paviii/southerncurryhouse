@@ -1,20 +1,12 @@
 import React, { useContext, useEffect, useState } from "react";
 import classNames from "./reviews.module.scss";
-import { useNavigate } from "react-router-dom";
-import CustomInput, {
-  CustomButton,
-  CustomDropdown,
-  EachCustomDatePicker,
-  Toastify,
-} from "../../components/Custom";
+import CustomInput, { Toastify } from "../../components/Custom";
 import axios from "axios";
 import { BACKENDURL } from "../../assets/constant";
 import { GlobalContext } from "../../context/globalContext";
-import { CiEdit } from "react-icons/ci";
 import { MdDeleteOutline } from "react-icons/md";
 
 const Reviews = () => {
-  const navigate = useNavigate();
   const { email } = useContext(GlobalContext);
   const [searchQuery, setSearchQuery] = useState("");
   const [allReviewsAvailable, setAllReviewsAvailable] = useState([]);
