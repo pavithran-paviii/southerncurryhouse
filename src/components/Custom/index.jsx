@@ -130,10 +130,6 @@ export const CustomDropdown = ({
     setIsOpen(!isOpen);
   };
 
-  const handleInputChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
-
   const selectOption = (option) => {
     setSelectedOption(option);
     setIsOpen(false);
