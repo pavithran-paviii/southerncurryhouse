@@ -8,6 +8,8 @@
   background-position: center;
   background-repeat: no-repeat;
   color: $font-color-dark;
+  min-height: 100vh;
+  padding-bottom: 2rem;
 
   & > .wrapper {
     margin: auto;
@@ -142,6 +144,7 @@
               font-weight: 500;
               white-space: nowrap;
               margin-bottom: 1rem;
+              gap: 1rem;
 
               & > :nth-child(2) {
                 width: -webkit-fill-available;

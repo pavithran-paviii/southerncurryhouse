@@ -18,7 +18,7 @@ const Landing = () => {
           <br /> Southern Kitchens
         </div>
         <div className={classNames.smallTag}>
-          Try out the finest south indian dishes
+          Try out the finest indian dishes
         </div>
         <GeneralButton text="View our menu" />
       </div>

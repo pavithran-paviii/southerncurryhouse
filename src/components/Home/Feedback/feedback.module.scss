@@ -203,6 +203,7 @@
         align-items: center;
 
         & > .phone {
+          text-align: center;
           & > .title {
             font-size: 0.9rem;
             margin-bottom: 0.3rem;
@@ -225,6 +226,7 @@
         }
 
         & > .otherDetails {
+          text-align: center;
           font-size: 0.9rem;
 
           & > .title {
@@ -248,7 +250,7 @@
 
     & > .wrapper {
       padding-bottom: 0;
-      
+
       & > .allReviews {
         padding: 20px 0;
       }

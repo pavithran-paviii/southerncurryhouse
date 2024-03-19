@@ -28,7 +28,7 @@ const About = () => {
         </div>
         <div className={classNames.bigText}>We Offer Top Notch</div>
         <div className={classNames.smallTag}>
-          Delectable Side Dishes, Crafted in Southern Indian Tradition
+          Delectable Side Dishes, Crafted in Indian Tradition
         </div>
         <div className={classNames.availableCategories}>
           <div>
