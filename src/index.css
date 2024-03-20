@@ -36,3 +36,7 @@ body {
   font-family: "DM Sans", sans-serif;
   font-optical-sizing: auto;
 }
+
+:root {
+  --animate-duration: 5s;
+}

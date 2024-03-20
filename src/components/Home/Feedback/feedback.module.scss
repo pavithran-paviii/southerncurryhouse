@@ -21,7 +21,7 @@
     & > .allReviews {
       padding-bottom: 50px;
 
-      & > .eachReview {
+      .eachReview {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -66,10 +66,16 @@
         }
 
         & > .profileImage {
-          width: 5rem;
-          height: 5rem;
+          width: 6rem;
+          height: 6rem;
           border-radius: 50%;
           background: white;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-transform: uppercase;
+          color: $font-color-dark;
+          font-size: 2.5rem;
 
           & > img {
           }

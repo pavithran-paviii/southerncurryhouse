@@ -2,16 +2,15 @@ import React, { useState } from "react";
 import classNames from "./feedback.module.scss";
 import axios from "axios";
 import { Toastify } from "../../Custom";
+import { BACKENDURL } from "../../../assets/constant";
+import FeedbackCarousal from "./sub/FeedbackCarousal";
 
 const Feedback = () => {
   const [reviewData, setReviewData] = useState({});
+
   async function submitReview() {
     try {
-      let response = await axios.post(
-        `https://backend.zafapetcare.com/review`,
-        reviewData
-      );
-
+      let response = await axios.post(`${BACKENDURL}/review`, reviewData);
       Toastify(response?.data?.message, "success");
       setTimeout(() => {
         window?.location?.reload();
@@ -32,16 +31,7 @@ const Feedback = () => {
     <div className={classNames.feedback}>
       <div className={classNames.wrapper}>
         <div className={classNames.allReviews}>
-          <div className={classNames.eachReview}>
-            <div className={classNames.review}>
-              “ Lorem ipsum dolor, sit amet consectetur adipisicing elit.
-              Eveniet at quo minus omnis consectetur. Error sunt laboriosam
-              inventore in magnam dolor! ”
-            </div>
-            <div className={classNames.dividerBoxes}></div>
-            <div className={classNames.profileImage}></div>
-            <div className={classNames.profileName}>Sam altman</div>
-          </div>
+          <FeedbackCarousal />
         </div>
         <div className={classNames.newReview}>
           <div className={classNames.writeReview}>
