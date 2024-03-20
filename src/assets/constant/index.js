@@ -1,2 +1,2 @@
 export const BACKENDURL = "https://backend.zafapetcare.com";
-export const OMAIL = "pavithranr65@gmail.com";
+export const OMAIL = "southerncurryhouse.ca@gmail.com";
