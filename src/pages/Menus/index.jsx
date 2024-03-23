@@ -1,6 +1,10 @@
 import React, { useContext, useEffect, useState } from "react";
 import classNames from "./menus.module.scss";
-import CustomInput, { CustomDropdown, Toastify } from "../../components/Custom";
+import CustomInput, {
+  CustomDropdown,
+  CustomImageUpload,
+  Toastify,
+} from "../../components/Custom";
 import axios from "axios";
 import { BACKENDURL } from "../../assets/constant";
 import { GlobalContext } from "../../context/globalContext";
@@ -173,7 +177,7 @@ const Menus = () => {
               stateValue={newItem}
               setState={setNewItem}
             />
-            <CustomInput
+            <CustomImageUpload
               title="Dish Image"
               placeHolder="Enter image URL..."
               name="image"

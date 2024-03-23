@@ -8,9 +8,9 @@
 
   & > .offerCard {
     position: fixed;
-    padding: 4rem;
+    padding: 3rem;
     background: white;
-    top: 50%;
+    top: 45%;
     left: 50%;
     transform: translate(-50%, -50%);
     aspect-ratio: 2/0.5;
@@ -18,7 +18,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: 1.75rem;
     background-color: #000000;
     // opacity: 0.8;
     background-image: linear-gradient(
@@ -71,23 +71,60 @@
       );
     background-size: 20px 35px;
     background-position: 0 0, 0 0, 10px 18px, 10px 18px, 0 0, 10px 18px;
+    border-radius: 7px;
+    box-shadow: $font-color-dark 0px 10px 36px 0px,
+      $font-color-dark 0px 0px 0px 1px;
+    rotate: -3deg;
+    font-family: "Truculenta", sans-serif;
 
     & > .title {
       font-size: 3rem;
       font-weight: 500;
       color: $font-color-dark;
+      color: white;
     }
     & > .description {
-      font-size: 2.2rem;
+      font-size: 2rem;
       font-weight: 500;
       color: $font-color-dark;
       text-align: center;
+      color: white;
     }
 
     & > .offer {
       font-size: 1.2rem;
       font-weight: 500;
       color: white;
+      border: 1px solid $border-color-dark;
+      padding: 1.2rem;
+      // width: 8rem;
+      // height: 8rem;
+      // border-radius: 50%;
+      text-align: center;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      background: $font-color-dark;
+      top: calc(100% - 2rem);
+      right: 2rem;
+      border-radius: 6px;
+      rotate: -0.5deg;
+
+      &::before {
+        content: "";
+        position: absolute;
+        border: 1px solid white;
+        inset: -3px;
+        border-radius: 6px;
+      }
+      &::after {
+        content: "";
+        position: absolute;
+        border: 1px solid white;
+        inset: -5px;
+        border-radius: 6px;
+      }
     }
 
     & > .closeBtn {

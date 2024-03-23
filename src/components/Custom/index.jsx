@@ -13,6 +13,8 @@ import {
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 import "flatpickr/dist/themes/material_blue.css";
+import { BACKENDURL } from "../../assets/constant";
+import axios from "axios";
 
 const CustomInput = ({
   title,
@@ -383,6 +385,52 @@ export const EachCustomDatePicker = ({
         //   setState({ ...stateValue, [name]: event?.target?.value });
         // }}
       />
+    </div>
+  );
+};
+
+export const CustomImageUpload = ({
+  title,
+  placeHolder,
+  name,
+  stateValue,
+  setState,
+}) => {
+  async function handleImageUpload(imageFile) {
+    const formData = new FormData();
+    formData.append("image", imageFile);
+    try {
+      let response = await axios.post(`${BACKENDURL}/image/upload`, formData, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
+      console.log(response, "Image uploaded response");
+    } catch (error) {
+      console.log("Error while uploading files!");
+    }
+  }
+
+  return (
+    <div className={classNames.customInput}>
+      <div className={classNames.title}>{title}</div>
+      <div className={classNames.inputContainer}>
+        <input
+          type="file"
+          placeholder={placeHolder}
+          value={name ? stateValue[name] : stateValue}
+          onChange={(event) => {
+            handleImageUpload(event?.target?.files[0]);
+            // if (name) {
+            //   setState((prev) => {
+            //     return { ...prev, [name]: event?.target?.files[0] };
+            //   });
+            // } else {
+            //   setState(event?.target?.files[0]);
+            // }
+          }}
+        />
+      </div>
     </div>
   );
 };
