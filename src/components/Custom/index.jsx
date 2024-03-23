@@ -4,12 +4,14 @@ import classNames from "./custom.module.scss";
 import { toast } from "react-toastify";
 
 //assets
+
 import {
   IoIosEye,
   IoIosEyeOff,
   IoMdArrowDropdown,
   IoMdArrowDropup,
 } from "react-icons/io";
+import { MdDeleteOutline } from "react-icons/md";
 import flatpickr from "flatpickr";
 import "flatpickr/dist/flatpickr.min.css";
 import "flatpickr/dist/themes/material_blue.css";
@@ -395,8 +397,11 @@ export const CustomImageUpload = ({
   name,
   stateValue,
   setState,
+  setLoading,
 }) => {
+  const [imageKey, setImageKey] = useState("");
   async function handleImageUpload(imageFile) {
+    setLoading(true);
     const formData = new FormData();
     formData.append("image", imageFile);
     try {
@@ -406,31 +411,77 @@ export const CustomImageUpload = ({
         },
       });
       console.log(response, "Image uploaded response");
+      if (response?.data?.data?.Location) {
+        if (name) {
+          setImageKey(response?.data?.data?.Key);
+          setState((prev) => {
+            return {
+              ...prev,
+              [name]: response?.data?.data?.Location,
+              key: response?.data?.data?.Key,
+            };
+          });
+        } else {
+          setState(response?.data?.data?.Location);
+        }
+      }
+      setLoading(false);
     } catch (error) {
+      setLoading(false);
       console.log("Error while uploading files!");
     }
   }
 
+  async function handleImageDelete() {
+    setLoading(true);
+    try {
+      let response = await axios.post(`${BACKENDURL}/image/delete`, {
+        key: imageKey,
+      });
+      setLoading(false);
+      console.log(response, "Image deleted response");
+    } catch (error) {
+      setLoading(false);
+      console.log("Error while deleting image!");
+    }
+  }
+
   return (
-    <div className={classNames.customInput}>
-      <div className={classNames.title}>{title}</div>
-      <div className={classNames.inputContainer}>
-        <input
-          type="file"
-          placeholder={placeHolder}
-          value={name ? stateValue[name] : stateValue}
-          onChange={(event) => {
-            handleImageUpload(event?.target?.files[0]);
-            // if (name) {
-            //   setState((prev) => {
-            //     return { ...prev, [name]: event?.target?.files[0] };
-            //   });
-            // } else {
-            //   setState(event?.target?.files[0]);
-            // }
+    <div className={classNames.customInput} style={{ position: "relative" }}>
+      <div className={classNames.title}>
+        {title}{" "}
+        <MdDeleteOutline
+          style={{ display: stateValue[name] || imageKey ? "" : "none" }}
+          onClick={() => {
+            setState((prev) => {
+              return { ...prev, [name]: "" };
+            });
+            if (imageKey) {
+              handleImageDelete();
+            }
           }}
         />
       </div>
+      {name && stateValue[name] ? (
+        <>
+          <img
+            className={classNames.uploadedImage}
+            src={name ? stateValue[name] : ""}
+            alt="uploaded dish image"
+          />
+        </>
+      ) : (
+        <div className={classNames.inputContainer}>
+          <input
+            type="file"
+            placeholder={placeHolder}
+            value={name ? stateValue[name] : stateValue}
+            onChange={(event) => {
+              handleImageUpload(event?.target?.files[0]);
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 };

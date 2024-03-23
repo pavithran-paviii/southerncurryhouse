@@ -8,6 +8,8 @@
   & > .title {
     font-size: 1rem;
     font-weight: 420;
+    display: flex;
+    justify-content: space-between;
   }
 
   & > .inputContainer {
@@ -41,6 +43,15 @@
         color: $font-color-dark;
       }
     }
+  }
+
+  & > .uploadedImage {
+    width: 100%;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 2rem;
+    object-fit: contain;
   }
 }
 

@@ -9,6 +9,7 @@ import axios from "axios";
 import { BACKENDURL } from "../../assets/constant";
 import { GlobalContext } from "../../context/globalContext";
 import { MdDeleteOutline } from "react-icons/md";
+import logoWhite from "../../assets/images/company/logo.svg";
 
 const Menus = () => {
   const { email } = useContext(GlobalContext);
@@ -17,6 +18,7 @@ const Menus = () => {
   const [localRefresh, setLocalRefresh] = useState(false);
   const [newItem, setNewItem] = useState({});
   const [createNewItem, setCreateNewItem] = useState(false);
+  const [menuUploadLoading, setMenuUploadLoading] = useState(false);
 
   //functions
 
@@ -39,7 +41,23 @@ const Menus = () => {
       });
   }
 
-  function deleteMenuItem(itemID) {
+  async function handleImageDelete(key) {
+    setMenuUploadLoading(true);
+    try {
+      let response = await axios.post(`${BACKENDURL}/image/delete`, {
+        key,
+      });
+      setMenuUploadLoading(false);
+      console.log(response, "Image deleted response");
+    } catch (error) {
+      setMenuUploadLoading(false);
+      console.log("Error while deleting image!");
+    }
+  }
+
+  function deleteMenuItem(itemID, key) {
+    setMenuUploadLoading(true);
+    handleImageDelete(key);
     axios
       .delete(`${BACKENDURL}/menu/${itemID}`)
       .then((response) => {
@@ -49,9 +67,11 @@ const Menus = () => {
         } else {
           Toastify(response?.data?.message, "error");
         }
+        setMenuUploadLoading(false);
         console.log(response, "Deleted menu item response");
       })
       .catch((error) => {
+        setMenuUploadLoading(false);
         console.log(error, "Deleted menu item error");
         Toastify(
           error?.response?.data?.message
@@ -64,6 +84,7 @@ const Menus = () => {
   }
 
   function addMenuItem() {
+    setMenuUploadLoading(true);
     newItem.email = email;
     axios
       .post(`${BACKENDURL}/menu`, newItem)
@@ -75,9 +96,12 @@ const Menus = () => {
         } else {
           Toastify(response?.data?.message, "error");
         }
+        setNewItem("");
+        setMenuUploadLoading(false);
         console.log(response, "Added menu item response");
       })
       .catch((error) => {
+        setMenuUploadLoading(false);
         console.log(error, "Added menu item error");
         Toastify(
           error?.response?.data?.message
@@ -143,7 +167,9 @@ const Menus = () => {
                       <td>{eachItem?.category}</td>
                       <td>
                         <MdDeleteOutline
-                          onClick={() => deleteMenuItem(eachItem?._id)}
+                          onClick={() =>
+                            deleteMenuItem(eachItem?._id, eachItem?.key)
+                          }
                         />
                       </td>
                     </tr>
@@ -183,6 +209,7 @@ const Menus = () => {
               name="image"
               stateValue={newItem}
               setState={setNewItem}
+              setLoading={setMenuUploadLoading}
             />
             <div>
               <CustomDropdown
@@ -211,6 +238,11 @@ const Menus = () => {
           <div className={classNames.submitBtn} onClick={addMenuItem}>
             Submit
           </div>
+          {menuUploadLoading && (
+            <div className={classNames.loadingAnimation}>
+              <img src={logoWhite} alt="logoWhite" />
+            </div>
+          )}
         </div>
       )}
     </div>
