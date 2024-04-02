@@ -8,7 +8,7 @@ import CustomInput, {
 import axios from "axios";
 import { BACKENDURL } from "../../assets/constant";
 import { GlobalContext } from "../../context/globalContext";
-import { MdDeleteOutline } from "react-icons/md";
+import { MdDeleteOutline, MdOutlineModeEditOutline } from "react-icons/md";
 import logoWhite from "../../assets/images/company/logo.svg";
 
 const Menus = () => {
@@ -17,6 +17,7 @@ const Menus = () => {
   const [allMenuItems, setAllMenuItems] = useState([]);
   const [localRefresh, setLocalRefresh] = useState(false);
   const [newItem, setNewItem] = useState({});
+  const [editItem, setEditItem] = useState({});
   const [createNewItem, setCreateNewItem] = useState(false);
   const [menuUploadLoading, setMenuUploadLoading] = useState(false);
 
@@ -73,6 +74,35 @@ const Menus = () => {
       .catch((error) => {
         setMenuUploadLoading(false);
         console.log(error, "Deleted menu item error");
+        Toastify(
+          error?.response?.data?.message
+            ? error?.response?.data?.message
+            : error?.message,
+          "error",
+          "error"
+        );
+      });
+  }
+
+  function editMenuItem() {
+    setMenuUploadLoading(true);
+
+    axios
+      .put(`${BACKENDURL}/menu/update`, editItem)
+      .then((response) => {
+        if (response?.data?.status) {
+          setLocalRefresh((prev) => !prev);
+          Toastify(response?.data?.message, "success");
+          window.location.reload();
+        } else {
+          Toastify(response?.data?.message, "error");
+        }
+        setMenuUploadLoading(false);
+        console.log(response, "Updated menu item response");
+      })
+      .catch((error) => {
+        setMenuUploadLoading(false);
+        console.log(error, "Updated menu item error");
         Toastify(
           error?.response?.data?.message
             ? error?.response?.data?.message
@@ -166,6 +196,12 @@ const Menus = () => {
                       <td>{eachItem?.image}</td>
                       <td>{eachItem?.category}</td>
                       <td>
+                        <MdOutlineModeEditOutline
+                          onClick={() => {
+                            setCreateNewItem("editItem");
+                            setEditItem(eachItem);
+                          }}
+                        />
                         <MdDeleteOutline
                           onClick={() =>
                             deleteMenuItem(eachItem?._id, eachItem?.key)
@@ -178,7 +214,79 @@ const Menus = () => {
           </tbody>
         </table>
       </div>
-      {createNewItem && (
+      {createNewItem === "editItem" ? (
+        <div className={classNames.addItem}>
+          <div className={classNames.title}>Edit {editItem?.name}</div>
+          <div className={classNames.inputContainer}>
+            <CustomInput
+              title="Name"
+              placeHolder="Enter dish name..."
+              name="name"
+              stateValue={editItem}
+              setState={setEditItem}
+            />
+            <CustomInput
+              title="Description"
+              placeHolder="Enter description..."
+              name="desc"
+              stateValue={editItem}
+              setState={setEditItem}
+            />
+            <CustomInput
+              title="Price"
+              placeHolder="Enter price..."
+              name="price"
+              stateValue={editItem}
+              setState={setEditItem}
+            />
+            <CustomImageUpload
+              title="Dish Image"
+              placeHolder="Enter image URL..."
+              name="image"
+              stateValue={editItem}
+              setState={setEditItem}
+              setLoading={setMenuUploadLoading}
+            />
+            <div>
+              <CustomDropdown
+                dropdown={[
+                  { name: "VEG-APPETIZERS", value: "VEG-APPETIZERS" },
+                  {
+                    name: "NON-VEG-APPETIZERS",
+                    value: "NON-VEG-APPETIZERS",
+                  },
+                  {
+                    name: "VEGETARIAN-ENTRIESS",
+                    value: "VEGETARIAN-ENTRIESS",
+                  },
+                  {
+                    name: "NON-VEGETARIAN-ENTRIESS",
+                    value: "NON-VEGETARIAN-ENTRIESS",
+                  },
+                  { name: "DESSERTS", value: "DESSERTS" },
+                  { name: "SIDES", value: "SIDES" },
+                ]}
+                name="category"
+                title="Select Category"
+                stateValue={editItem}
+                setState={setEditItem}
+                topTitle="true"
+                type="obj"
+                mapVal={"name"}
+                stateVal={"value"}
+              />
+            </div>
+          </div>
+          <div className={classNames.submitBtn} onClick={editMenuItem}>
+            Submit
+          </div>
+          {menuUploadLoading && (
+            <div className={classNames.loadingAnimation}>
+              <img src={logoWhite} alt="logoWhite" />
+            </div>
+          )}
+        </div>
+      ) : createNewItem ? (
         <div className={classNames.addItem}>
           <div className={classNames.title}>Add item to menu</div>
           <div className={classNames.inputContainer}>
@@ -215,8 +323,14 @@ const Menus = () => {
               <CustomDropdown
                 dropdown={[
                   { name: "VEG-APPETIZERS", value: "VEG-APPETIZERS" },
-                  { name: "NON-VEG-APPETIZERS", value: "NON-VEG-APPETIZERS" },
-                  { name: "VEGETARIAN-ENTRIESS", value: "VEGETARIAN-ENTRIESS" },
+                  {
+                    name: "NON-VEG-APPETIZERS",
+                    value: "NON-VEG-APPETIZERS",
+                  },
+                  {
+                    name: "VEGETARIAN-ENTRIESS",
+                    value: "VEGETARIAN-ENTRIESS",
+                  },
                   {
                     name: "NON-VEGETARIAN-ENTRIESS",
                     value: "NON-VEGETARIAN-ENTRIESS",
@@ -244,6 +358,8 @@ const Menus = () => {
             </div>
           )}
         </div>
+      ) : (
+        ""
       )}
     </div>
   );
