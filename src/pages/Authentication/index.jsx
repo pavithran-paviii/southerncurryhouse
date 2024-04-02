@@ -48,7 +48,7 @@ export const Login = () => {
             userCredentials?.isPasswordRemember
           );
           setTimeout(() => {
-            navigate("/dashboard");
+            navigate("/menud");
           }, 100);
         } else {
           Toastify(response?.data?.message, "error");
@@ -140,7 +140,7 @@ export const SignUp = () => {
           if (response?.data?.status) {
             Toastify(response?.data?.message, "error");
             localStorage.setItem("VBemail", userCredentials?.email);
-            navigate("/dashboard");
+            navigate("/menus");
           } else {
             Toastify(response?.data?.message, "error");
           }
