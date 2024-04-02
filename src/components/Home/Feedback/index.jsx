@@ -82,7 +82,7 @@ const Feedback = () => {
               <div className={classNames.title}>Timings</div>
               <div className={classNames.value}>
                 <div>Thursday - Friday - Saturday</div>
-                <div>8.00 am to 10.00 pm</div>
+                <div>05.00 pm to 09.00 pm</div>
               </div>
             </div>
           </div>

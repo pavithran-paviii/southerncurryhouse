@@ -32,7 +32,25 @@ const About = () => {
         </div>
         <div className={classNames.availableCategories}>
           <div>
-            <img src={about1} alt="about1" />
+            <img
+              src="https://southerncurrycup.s3.ca-central-1.amazonaws.com/Samosa%20%281%29.jpg"
+              alt="about1"
+            />
+            <div className={classNames.title}>Appetizers</div>
+            <div
+              className={classNames.viewBtn}
+              onClick={() => {
+                navigate("/menu");
+              }}
+            >
+              View Menu
+            </div>
+          </div>
+          <div>
+            <img
+              src="https://southerncurrycup.s3.ca-central-1.amazonaws.com/Photoroom_20240328_183828.jpg"
+              alt="about2"
+            />
             <div className={classNames.title}>Curry</div>
             <div
               className={classNames.viewBtn}
@@ -44,19 +62,10 @@ const About = () => {
             </div>
           </div>
           <div>
-            <img src={about2} alt="about2" />
-            <div className={classNames.title}>Sides</div>
-            <div
-              className={classNames.viewBtn}
-              onClick={() => {
-                navigate("/menu");
-              }}
-            >
-              View Menu
-            </div>
-          </div>
-          <div>
-            <img src={about2} alt="about3" />
+            <img
+              src="https://southerncurrycup.s3.ca-central-1.amazonaws.com/Photoroom_20240330_200421.JPG"
+              alt="about3"
+            />
             <div className={classNames.title}>Deserts</div>
             <div
               className={classNames.viewBtn}
