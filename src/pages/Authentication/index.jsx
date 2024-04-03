@@ -48,7 +48,7 @@ export const Login = () => {
             userCredentials?.isPasswordRemember
           );
           setTimeout(() => {
-            navigate("/menud");
+            navigate("/menus");
           }, 100);
         } else {
           Toastify(response?.data?.message, "error");
