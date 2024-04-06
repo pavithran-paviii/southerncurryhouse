@@ -213,7 +213,7 @@
       }
 
       .allItems {
-        grid-template-columns: repeat(1, 1fr);
+        grid-template-columns: repeat(1, 1fr) !important;
         padding: 1.5rem 0;
 
         &::before {
@@ -223,6 +223,7 @@
         .eachItem {
           width: 100% !important;
           flex-direction: column;
+          overflow: hidden;
 
           & > .itemImage {
             width: 9rem !important;

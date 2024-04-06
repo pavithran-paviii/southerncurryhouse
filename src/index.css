@@ -42,3 +42,12 @@ body {
 :root {
   --animate-duration: 5s;
 }
+
+@media only screen and (max-width: 860px) {
+  /* CSS rules for extra small devices */
+
+  #root {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+}
