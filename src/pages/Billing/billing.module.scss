@@ -1,0 +1,160 @@
+@import "../../assets/scss/variables.scss";
+
+.menuu {
+  position: relative;
+  padding: 2rem;
+  height: 100%;
+  overflow: hidden;
+
+  & > .topBar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+
+    & > .searchOption {
+      padding: 1rem 1.5rem;
+      border: 1px solid grey;
+      min-width: 450px;
+      border-radius: 8px;
+      outline: none;
+
+      &:focus {
+        border: 1px solid $font-color-dark;
+      }
+    }
+
+    & > .addClient {
+      background: $font-color-dark;
+      color: white;
+      padding: 1rem 2rem;
+      border-radius: 35px;
+      margin-left: auto;
+      width: max-content;
+      cursor: pointer;
+      outline: none;
+      border: none;
+    }
+  }
+
+  & > .billingCounter {
+    height: calc(100% - 82px);
+    overflow-y: scroll;
+    display: flex;
+    width: 100%;
+    border: 1px solid grey;
+    border-radius: 5px;
+
+    & > .billingItems {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      width: -webkit-fill-available;
+      height: 100%;
+      overflow-y: scroll;
+      padding: 1rem;
+
+      & > .eachDish {
+        display: flex;
+        gap: 1rem;
+        padding: 1rem;
+        border: 1px solid grey;
+        border-radius: 4px;
+
+        & > img {
+          height: 8rem;
+          width: 8rem;
+          border-radius: 5px;
+        }
+
+        & > .contentBox {
+          display: flex;
+          flex-direction: column;
+          gap: 0.5rem;
+
+          & > .title {
+            font-size: 1.2rem;
+            font-weight: 500;
+          }
+
+          & > .price {
+            font-size: 1rem;
+            color: #d08945;
+            font-weight: 450;
+          }
+
+          & > .quantityBtn {
+            display: flex;
+            justify-content: space-between;
+            border: 1px solid grey;
+            border-radius: 5px;
+            width: max-content;
+
+            & > div {
+              padding: 0.3rem 0.4rem;
+              font-size: 0.9rem;
+              cursor: pointer;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+
+              & > input {
+                border: none;
+                outline: none;
+                height: 100%;
+                width: 2rem;
+                padding: 0.3rem;
+                text-align: center;
+              }
+            }
+
+            & > :nth-child(2) {
+              padding: 0;
+              border-left: 1px solid grey;
+              border-right: 1px solid grey;
+            }
+          }
+        }
+      }
+    }
+
+    & > .billingCart {
+      width: 400px;
+      display: flex;
+      flex-direction: column;
+      gap: 1.2rem;
+      padding: 1rem;
+      border-left: 1px solid grey;
+
+      & > .title {
+        font-size: 1.2rem;
+        font-weight: 500;
+      }
+
+      & > .cart {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+
+        & > .eachItem {
+          display: flex;
+          justify-content: space-between;
+          align-items: flex-start;
+
+          & > :nth-child(1) {
+            max-width: 70%;
+          }
+        }
+      }
+
+      & > .totalDash {
+        height: 4rem;
+
+        & > .totalBillItem {
+          display: flex;
+          justify-content: space-between;
+        }
+      }
+    }
+  }
+}

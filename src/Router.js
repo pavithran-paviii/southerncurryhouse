@@ -13,6 +13,7 @@ import DashboardLayout from "./layout/Dashboard";
 import Menus from "./pages/Menus";
 import Offers from "./pages/Offers";
 import Reviews from "./pages/Reviews";
+import Billing from "./pages/Billing";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -23,6 +24,7 @@ const router = createBrowserRouter(
       <Route path="menu" element={<Menu />} />
       <Route path="dashboard" element={<DashboardLayout child="" />} />
       <Route path="menus" element={<DashboardLayout child={<Menus />} />} />
+      <Route path="billing" element={<DashboardLayout child={<Billing />} />} />
       <Route path="offers" element={<DashboardLayout child={<Offers />} />} />
       <Route path="reviews" element={<DashboardLayout child={<Reviews />} />} />
       <Route path="*" element={<Error />} />

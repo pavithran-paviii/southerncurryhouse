@@ -9,6 +9,7 @@ export const GeneralButton = ({ text }) => {
       role="button"
       onClick={() => {
         if (text === "Locate") {
+          window.open("https://maps.app.goo.gl/dyze1JtCRM72gSic7", "_blank");
         } else {
           navigate("/menu");
         }
