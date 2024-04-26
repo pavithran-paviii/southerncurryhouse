@@ -55,27 +55,35 @@ const Billing = () => {
       <div className={classNames.billingCounter}>
         <div className={classNames.billingItems}>
           {Array.isArray(allMenuItems) && allMenuItems?.length > 0
-            ? allMenuItems?.map((eachItem, index) => {
-                return (
-                  <div
-                    className={classNames.eachDish}
-                    key={eachItem?.image + index}
-                  >
-                    <img src={eachItem?.image} alt={eachItem?.name} />
-                    <div className={classNames.contentBox}>
-                      <div className={classNames.title}>{eachItem?.name}</div>
-                      <div className={classNames.price}>${eachItem?.price}</div>
-                      <div className={classNames.quantityBtn}>
-                        <div>-</div>
-                        <div>
-                          <input type="text" placeholder="0" />
+            ? allMenuItems
+                ?.filter((eachFilterItem) =>
+                  eachFilterItem?.name
+                    ?.toLowerCase()
+                    ?.includes(searchQuery?.toLowerCase())
+                )
+                ?.map((eachItem, index) => {
+                  return (
+                    <div
+                      className={classNames.eachDish}
+                      key={eachItem?.image + index}
+                    >
+                      <img src={eachItem?.image} alt={eachItem?.name} />
+                      <div className={classNames.contentBox}>
+                        <div className={classNames.title}>{eachItem?.name}</div>
+                        <div className={classNames.price}>
+                          ${eachItem?.price}
                         </div>
-                        <div>+</div>
+                        <div className={classNames.quantityBtn}>
+                          <div>-</div>
+                          <div>
+                            <input type="text" placeholder="0" />
+                          </div>
+                          <div>+</div>
+                        </div>
                       </div>
                     </div>
-                  </div>
-                );
-              })
+                  );
+                })
             : ""}
         </div>
         <div className={classNames.billingCart}></div>

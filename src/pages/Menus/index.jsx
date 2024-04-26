@@ -185,7 +185,7 @@ const Menus = () => {
               allMenuItems
                 ?.filter((eachClient) => {
                   let searchText = searchQuery?.toLowerCase();
-                  return eachClient?.name?.includes(searchText);
+                  return eachClient?.name?.toLowerCase()?.includes(searchText);
                 })
                 .map((eachItem, index) => {
                   return (
