@@ -37,9 +37,11 @@ const Home = () => {
         <div className={classNames.offerCard}>
           <div className={classNames.title}>{offerData?.title}</div>
           <div className={classNames.description}>{offerData?.description}</div>
-          <div className={classNames.offer}>
-            {"UP TO " + offerData?.offerPercentage + "% OFF"}
-          </div>
+          {offerData?.offerPercentage !== "0" && (
+            <div className={classNames.offer}>
+              {"UP TO " + offerData?.offerPercentage + "% OFF"}
+            </div>
+          )}
           <div className={classNames.closeBtn} onClick={() => setOfferData("")}>
             X
           </div>
