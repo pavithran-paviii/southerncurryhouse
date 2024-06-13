@@ -1,0 +1,13 @@
+.qrMenu {
+  width: 100%;
+  background: #070708;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & > img {
+    width: 100%;
+    max-width: 800px;
+    // margin: 0 auto;
+  }
+}

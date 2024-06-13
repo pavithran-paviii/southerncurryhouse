@@ -14,6 +14,7 @@ import Menus from "./pages/Menus";
 import Offers from "./pages/Offers";
 import Reviews from "./pages/Reviews";
 import Billing from "./pages/Billing";
+import QRMenu from "./pages/QRMenu";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -21,6 +22,7 @@ const router = createBrowserRouter(
       <Route path="" element={<Home />} />
       <Route path="signin" element={<Authentication child={<Login />} />} />
       <Route path="signup" element={<Authentication child={<SignUp />} />} />
+      <Route path="menucard" element={<QRMenu />} />
       <Route path="menu" element={<Menu />} />
       <Route path="dashboard" element={<DashboardLayout child="" />} />
       <Route path="menus" element={<DashboardLayout child={<Menus />} />} />
