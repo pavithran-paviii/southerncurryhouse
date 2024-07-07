@@ -31,7 +31,7 @@ const Home = () => {
   // }, []);
 
   return (
-    <div className={classNames.home}>
+    <div className={classNames.home} onClick={() => setOfferData("")}>
       <Navbar />
       <Landing />
       <About />
@@ -54,9 +54,9 @@ const Home = () => {
       {offerData && (
         <div className={classNames.offerPoster}>
           <img src={offerToday} alt="offerToday" />
-          <div className={classNames.closeBtn} onClick={() => setOfferData("")}>
+          {/* <div className={classNames.closeBtn} onClick={() => setOfferData("")}>
             X
-          </div>
+          </div> */}
         </div>
       )}
     </div>
