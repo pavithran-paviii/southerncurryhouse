@@ -37,7 +37,8 @@ const Navbar = () => {
             <FaBowlFood />
             <div>
               <LuClock5 />
-              Thursday - Friday - Saturday - Sunday : 05.00 pm to 09.00 pm
+              Thursday - Friday - Saturday - Sunday - Monday : 05.00 pm to 09.00
+              pm
             </div>
           </div>
           <div className={classNames.contact}>

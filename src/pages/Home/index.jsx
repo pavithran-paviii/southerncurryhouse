@@ -15,20 +15,20 @@ import { BACKENDURL, OMAIL } from "../../assets/constant";
 import offerToday from "../../assets/posters/07-07-2024.jpg";
 
 const Home = () => {
-  const [offerData, setOfferData] = useState(true);
+  const [offerData, setOfferData] = useState(false);
 
-  // useEffect(() => {
-  //   axios
-  //     .get(`${BACKENDURL}/offer/${OMAIL}`)
-  //     .then((response) => {
-  //       if (response?.data?.status) {
-  //         setOfferData(response?.data?.data);
-  //       }
-  //     })
-  //     .catch((error) => {
-  //       console.log(error?.message);
-  //     });
-  // }, []);
+  useEffect(() => {
+    axios
+      .get(`${BACKENDURL}/offer/${OMAIL}`)
+      .then((response) => {
+        if (response?.data?.status) {
+          setOfferData(response?.data?.data);
+        }
+      })
+      .catch((error) => {
+        console.log(error?.message);
+      });
+  }, []);
 
   return (
     <div className={classNames.home} onClick={() => setOfferData("")}>
@@ -37,7 +37,7 @@ const Home = () => {
       <About />
       <MenuCarousal />
       <Feedback />
-      {/* {offerData && (
+      {offerData && (
         <div className={classNames.offerCard}>
           <div className={classNames.title}>{offerData?.title}</div>
           <div className={classNames.description}>{offerData?.description}</div>
@@ -49,11 +49,6 @@ const Home = () => {
           <div className={classNames.closeBtn} onClick={() => setOfferData("")}>
             X
           </div>
-        </div>
-      )} */}
-      {offerData && (
-        <div className={classNames.offerPoster}>
-          <img src={offerToday} alt="offerToday" />
         </div>
       )}
     </div>
