@@ -37,8 +37,10 @@ const Navbar = () => {
             <FaBowlFood />
             <div>
               <LuClock5 />
-              Thursday - Friday - Saturday - Sunday - Monday : 05.00 pm to 09.00
-              pm
+              {/* Thursday - Friday - Saturday - Sunday - Monday : 05.00 pm to 09.00
+              pm */}
+              We will be closed from 12/10/2024 to 18/10/2024 due to the
+              holidays
             </div>
           </div>
           <div className={classNames.contact}>

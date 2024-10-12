@@ -37,25 +37,31 @@ const Home = () => {
       <About />
       <MenuCarousal />
       <Feedback />
-      {/* {offerData && (
+      {offerData && (
         <div className={classNames.offerCard}>
-          <div className={classNames.title}>{offerData?.title}</div>
-          <div className={classNames.description}>{offerData?.description}</div>
-          {offerData?.offerPercentage !== "0" && (
+          <div className={classNames.title}>
+            Temporary Closure for the Holidays
+          </div>
+          <div className={classNames.description}>
+            We will be closed from 12/10/2024 to 18/10/2024 due to the holidays.
+            Thank you for your understanding, and we wish you a wonderful
+            holiday season!"
+          </div>
+          {/* {offerData?.offerPercentage !== "0" && (
             <div className={classNames.offer}>
               {"UP TO " + offerData?.offerPercentage + "% OFF"}
             </div>
-          )}
+          )} */}
           <div className={classNames.closeBtn} onClick={() => setOfferData("")}>
             X
           </div>
         </div>
-      )} */}
-      {offerData && (
+      )}
+      {/* {offerData && (
         <div className={classNames.offerPoster}>
           <img src={offerToday} alt="offerToday" />
         </div>
-      )}
+      )} */}
     </div>
   );
 };
