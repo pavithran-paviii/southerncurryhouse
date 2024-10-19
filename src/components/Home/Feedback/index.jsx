@@ -81,12 +81,8 @@ const Feedback = () => {
             <div className={classNames.otherDetails}>
               <div className={classNames.title}>Timings</div>
               <div className={classNames.value}>
-                <div>
-                  We will be closed from 12/10/2024 to 18/10/2024 due to the
-                  holidays
-                </div>
-                {/* <div>Thursday - Friday - Saturday - Sunday - Monday</div>
-                <div>05.00 pm to 09.00 pm</div> */}
+                <div>Thursday - Friday - Saturday - Sunday - Monday</div>
+                <div>05.00 pm to 09.00 pm</div>
                 <div></div>
               </div>
             </div>

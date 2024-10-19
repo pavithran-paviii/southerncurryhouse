@@ -37,7 +37,7 @@ const Home = () => {
       <About />
       <MenuCarousal />
       <Feedback />
-      {offerData && (
+      {/* {offerData && (
         <div className={classNames.offerCard}>
           <div className={classNames.title}>
             Temporary Closure for the Holidays
@@ -47,21 +47,21 @@ const Home = () => {
             Thank you for your understanding, and we wish you a wonderful
             holiday season!"
           </div>
-          {/* {offerData?.offerPercentage !== "0" && (
+          {offerData?.offerPercentage !== "0" && (
             <div className={classNames.offer}>
               {"UP TO " + offerData?.offerPercentage + "% OFF"}
             </div>
-          )} */}
+          )}
           <div className={classNames.closeBtn} onClick={() => setOfferData("")}>
             X
           </div>
         </div>
-      )}
-      {/* {offerData && (
+      )} */}
+      {offerData && (
         <div className={classNames.offerPoster}>
           <img src={offerToday} alt="offerToday" />
         </div>
-      )} */}
+      )}
     </div>
   );
 };
