@@ -40,10 +40,10 @@ const Home = () => {
       {offerData && (
         <div className={classNames.offerCard}>
           <div className={classNames.title}>
-            Temporary Closure for the Holidays
+            Temporary Closure due to slow season
           </div>
           <div className={classNames.description}>
-            We will be closed from 8/11/2024 to 27/11/2024 due to the holidays.
+            We will be closed from 8/11/2024 to 27/11/2024 due to slow season.
             Thank you for your understanding, and we wish you a wonderful
             holiday season!"
           </div>
