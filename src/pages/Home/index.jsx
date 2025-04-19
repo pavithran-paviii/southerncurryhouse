@@ -43,7 +43,7 @@ const Home = () => {
             Temporary Closure due to slow season
           </div>
           <div className={classNames.description}>
-            We will be closed from 10/04/2025 to 25/04/2026 due to Slow Season.
+            We will be closed from 10/04/2025 to 26/04/2025 due to Slow Season.
             Thank you for your understanding, and we wish you a wonderful
             holiday season!"
           </div>

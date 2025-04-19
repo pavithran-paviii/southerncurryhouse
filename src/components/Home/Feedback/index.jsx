@@ -84,7 +84,7 @@ const Feedback = () => {
                 {/* <div>Thursday - Friday - Saturday - Sunday - Monday</div>
                 <div>05.00 pm to 08.00 pm</div> */}
                 <div>
-                  Closed from 10/04/2025 to 25/04/2026 due to Slow Season
+                  Closed from 10/04/2025 to 26/04/2025 due to Slow Season
                 </div>
               </div>
             </div>
