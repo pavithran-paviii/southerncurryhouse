@@ -81,11 +81,11 @@ const Feedback = () => {
             <div className={classNames.otherDetails}>
               <div className={classNames.title}>Timings</div>
               <div className={classNames.value}>
-                {/* <div>Thursday - Friday - Saturday - Sunday - Monday</div>
-                <div>05.00 pm to 08.00 pm</div> */}
-                <div>
+                <div>Thursday - Friday - Saturday - Sunday - Monday</div>
+                <div>05.00 pm to 08.00 pm</div>
+                {/* <div>
                   Closed from 10/04/2025 to 26/04/2025 due to Slow Season
-                </div>
+                </div> */}
               </div>
             </div>
           </div>
