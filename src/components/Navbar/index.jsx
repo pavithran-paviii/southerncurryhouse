@@ -11,10 +11,10 @@ import { LuClock5 } from "react-icons/lu";
 import { FiPhone } from "react-icons/fi";
 import { IoMailOpenOutline } from "react-icons/io5";
 import { GeneralButton } from "../General/Button";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 
 const Navbar = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const [selectedNavItem, setSelectedNavItem] = useState("Home");
 
   //constant
@@ -56,6 +56,7 @@ const Navbar = () => {
         </div>
         <div className={classNames.navigationNav}>
           <div className={classNames.logo} onClick={() => navigate("/")}>
+          <div className={classNames.logo} onClick={() => router.push("/")}>
             <img src={mainLogo} alt="mainLogo" />
             <div className={classNames.singleLetter}>S</div>
             <div>
@@ -77,7 +78,7 @@ const Navbar = () => {
                   onClick={(event) => {
                     setSelectedNavItem(eachItem);
                     if (eachItem?.nav) {
-                      navigate(eachItem?.nav);
+                      router.push(eachItem?.nav);
                     }
                   }}
                 >

@@ -5,23 +5,24 @@ import classNames from "./dashboardLayout.module.scss";
 import logoWhite from "../../assets/images/company/logo.svg";
 import { dashboardItems } from "../../assets/constant/mapItems";
 import { IoIosSettings } from "react-icons/io";
-import { Navigate, useLocation, useNavigate } from "react-router-dom";
+import { useRouter, usePathname } from "next/navigation";
 import { GlobalContext } from "../../context/globalContext";
 import { IoLogOut } from "react-icons/io5";
 
 const DashboardLayout = ({ child }) => {
-  const navigate = useNavigate();
-  const location = useLocation();
+  const router = useRouter();
+  const pathname = usePathname();
   const { email } = useContext(GlobalContext);
 
   //functions
   function logoutFunc() {
     localStorage.clear();
-    navigate("/");
+    router.push("/");
   }
 
   if (!email) {
-    return <Navigate to="/signin" />;
+    router.push("/signin");
+    return null;
   }
   return (
     <section className={classNames.dashboardLayout}>
@@ -34,13 +35,13 @@ const DashboardLayout = ({ child }) => {
             return (
               <div
                 className={`${classNames.sidebarItem} ${
-                  location?.pathname?.includes(eachItem?.name?.toLowerCase())
+                  pathname?.includes(eachItem?.name?.toLowerCase())
                     ? classNames.selectedItem
                     : ""
                 }`}
                 key={eachItem?.name + index}
                 onClick={() => {
-                  navigate(`/${eachItem?.name?.toLowerCase()}`);
+                  router.push(`/${eachItem?.name?.toLowerCase()}`);
                 }}
               >
                 {eachItem.icon}

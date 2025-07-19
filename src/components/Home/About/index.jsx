@@ -7,10 +7,10 @@ import { ReactComponent as VanillaFlowerIcon } from "../../../assets/images/spic
 import { ReactComponent as Divider } from "../../../assets/images/elements/divider.svg";
 import about1 from "../../../assets/images/dishes/about1.jpg";
 import about2 from "../../../assets/images/dishes/about2.jpg";
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 
 const About = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   return (
     <div className={classNames.about}>
       <AyurvedaBowlIcon
@@ -40,7 +40,7 @@ const About = () => {
             <div
               className={classNames.viewBtn}
               onClick={() => {
-                navigate("/menu");
+                router.push("/menu");
               }}
             >
               View Menu
@@ -55,7 +55,7 @@ const About = () => {
             <div
               className={classNames.viewBtn}
               onClick={() => {
-                navigate("/menu");
+                router.push("/menu");
               }}
             >
               View Menu
@@ -70,7 +70,7 @@ const About = () => {
             <div
               className={classNames.viewBtn}
               onClick={() => {
-                navigate("/menu");
+                router.push("/menu");
               }}
             >
               View Menu

@@ -9,7 +9,8 @@ import CustomInput, {
   CustomDropdown,
   Toastify,
 } from "../../components/Custom";
-import { Link, useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
+import Link from "next/link";
 import { FcGoogle } from "react-icons/fc";
 import axios from "axios";
 import { BACKENDURL } from "../../assets/constant";
@@ -31,7 +32,7 @@ const Authentication = ({ child }) => {
 export default Authentication;
 
 export const Login = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const { setEmail } = useContext(GlobalContext);
   const [userCredentials, setUserCredentials] = useState({});
 
@@ -48,7 +49,7 @@ export const Login = () => {
             userCredentials?.isPasswordRemember
           );
           setTimeout(() => {
-            navigate("/menus");
+            router.push("/menus");
           }, 100);
         } else {
           Toastify(response?.data?.message, "error");
@@ -77,7 +78,7 @@ export const Login = () => {
       <h3>
         <span
           onClick={() => {
-            navigate("/signup");
+            router.push("/signup");
           }}
         >
           Create an account
@@ -125,7 +126,7 @@ export const Login = () => {
 };
 
 export const SignUp = () => {
-  const navigate = useNavigate();
+  const router = useRouter();
   const [userCredentials, setUserCredentials] = useState({});
 
   function createUser() {
@@ -140,7 +141,7 @@ export const SignUp = () => {
           if (response?.data?.status) {
             Toastify(response?.data?.message, "error");
             localStorage.setItem("VBemail", userCredentials?.email);
-            navigate("/menus");
+            router.push("/menus");
           } else {
             Toastify(response?.data?.message, "error");
           }

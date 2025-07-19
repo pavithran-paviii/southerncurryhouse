@@ -1,8 +1,8 @@
-import { useNavigate } from "react-router-dom";
+import { useRouter } from "next/navigation";
 import "./button.scss";
 
 export const GeneralButton = ({ text }) => {
-  const navigate = useNavigate();
+  const router = useRouter();
   return (
     <div
       class="button-52"
@@ -11,7 +11,7 @@ export const GeneralButton = ({ text }) => {
         if (text === "Locate") {
           window.open("https://maps.app.goo.gl/dyze1JtCRM72gSic7", "_blank");
         } else {
-          navigate("/menu");
+          router.push("/menu");
         }
       }}
     >
